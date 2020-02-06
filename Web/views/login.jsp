@@ -18,13 +18,13 @@
 body {
   margin: 0;
   /* background-color: #0f4c81; 2f4f4f */
-  background: linear-gradient(45deg,#0f4c81,#778899)fixed;
+  background: linear-gradient(45deg,#1d112c,#8f61b3)fixed;
 }
 
 
 .login-form {
   position: absolute;
-  background-color: #EEEFF1;
+  background-color: rgb(177, 149, 214);
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
@@ -52,7 +52,7 @@ body {
 .submit-btn {
   border: none;
   width: 90%;
-  background-color: #0f4c81;
+  background-color: #3e0b79;
   border-radius: 5px;
   font-size: 14px;
   padding: 10px;
@@ -82,7 +82,7 @@ body {
  
   <div class="login-form">
     <form action="/Semi/login.me" method="post" name="frm" id="frm">
-      <a href="semi02.html"><img src="images/winwin_logo.PNG" class="winwin" ></a>
+      <a href="semi02.html"><img src="../resource/images/태환.png" width="300" height="280px"  > </a>
       <input type="text" name="id" id="id" class="text-field" placeholder="아이디"><br>
       <input type="password" name="pw" id="pw" class="text-field" placeholder="비밀번호"><br>
       <input type="submit" value="로그인" class="submit-btn" onclick="submitAttion()"/>
