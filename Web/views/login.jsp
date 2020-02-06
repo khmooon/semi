@@ -91,7 +91,7 @@ body {
     <div class="links">
       <a href="#">아이디 찾기 </a> &nbsp;
       <a href="#">비밀번호 찾기 </a> <br>
-      <a href="#"> <br> 회원가입</a>
+ 
     </div>
   </div>
   <script>
