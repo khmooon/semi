@@ -1,0 +1,138 @@
+#box1 {
+    width: 99%;
+    height: 15%;
+    
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    border-style: hidden;
+    box-shadow: 3px 3px 2px 1px rgb(204, 204, 204);
+}
+
+#box1-1 {
+    width: 40%;
+    height: 20%;
+    
+}
+
+#box2 {
+    width: 99%;
+    height: 40%;
+    text-align: center;
+
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    border-style: hidden;
+    box-shadow: 3px 3px 2px 1px rgb(204, 204, 204);
+}
+
+#box2-1 {
+    width: 98%;
+    height: 10%;
+    /* border: 1px solid black; */
+}
+
+#box2-2 {
+    width: 98%;
+    height: 20%;
+    /* border: 1px solid black; */
+}
+
+#box2-3 {
+    width: 98%;
+    height: 68%;
+    /* border: 1px solid black; */
+}
+
+#box3 {
+    width: 99%;
+    height: 43%;
+    
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    border-style: hidden;
+    box-shadow: 3px 3px 2px 1px rgb(204, 204, 204);
+
+}
+#box3-1 {
+    width: 95%;
+    height: 15%;
+    /* border: 1px solid black; */
+}
+#box3-2 {
+    width: 95%;
+    height: 33%;
+    /* border: 1px solid black; */
+}
+#box3-3 {
+    width: 95%;
+    height: 50%;
+    /* border: 1px solid black; */
+}
+#box3-3-1{
+    width: 99%;
+    height: 30%;
+    border: 1px solid black;
+}
+.day {
+    width: 10%;
+    height: 100px;
+
+    margin-right: 0.8%;
+    margin-left: 0.8%;
+
+    border-style: hidden;
+    box-shadow: 3px 3px 2px 1px rgb(204, 204, 204);
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.inline1 {
+    display: inline-block;
+}
+
+.inline2 {
+    display: inline-block;
+}
+
+.inline3 {
+    display: inline-block;
+}
+
+.inline4 {
+    display: inline-block;
+}
+
+.weekday {
+    background: rgb(231, 231, 231);
+}
+
+.weekend {
+    background: rgb(255, 225, 230);
+}

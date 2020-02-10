@@ -428,4 +428,54 @@ public class MemberDao {
 		return listCount;
 	}
 
+	/**
+	  * @Method Name : selectAllList
+	  * @작성일 : 2020. 2. 9.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : 모든 사원 정보를 부서명으로 sorting해 불러오기
+	  * @param con
+	  * @return
+	  */
+	public ArrayList<Member> selectAllList(Connection con) {
+		
+		ArrayList<Member> list = null;
+		
+		Statement stmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAllList");
+			
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<Member>();
+			
+			while(rset.next()) {
+				// 생성자 하나 만들어서 최소 정보만 불러오기
+				Member m = new Member(
+						rset.getInt("EMP_NO"),
+						rset.getString("EMP_NAME"),
+						rset.getString("DEPT_NAME"),
+						rset.getString("JOB_NAME")
+						);
+				list.add(m);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rset);
+		}
+
+		return list;
+	}
+	
+	
+	
 }

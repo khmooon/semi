@@ -101,7 +101,24 @@ public class Member implements Serializable{
 		this.entYN = entYN;
 	}
 
-
+	
+	/**
+	  * @Constructor Name : Member
+	  * @작성일 : 2020. 2. 9.
+	  * @작성자 : songinseok
+	  * @변경이력 : 전자결재용 매개변수 생성자
+	  * @param empNo
+	  * @param empName
+	  * @param deptName
+	  * @param jobName
+	  */
+	public Member(int empNo, String empName, String deptName, String jobName) {
+		super();
+		this.empNo = empNo;
+		this.empName = empName;
+		this.deptName = deptName;
+		this.jobName = jobName;
+	}
 
 	public int getEmpNo() {
 		return empNo;

@@ -19,7 +19,6 @@ public class Message implements Serializable {
 	private String send_date;
 	private int receive_emp_no;
 	
-	
 
 	public int getMessage_Id() {
 		return message_Id;

@@ -9,7 +9,7 @@ import com.member.model.dao.MemberDao;
 import com.member.model.exception.MemberException;
 import com.member.model.vo.Member;
 public class MemberService {
-
+	
 	MemberDao mDao = new MemberDao();
 	
 	public MemberService() {
@@ -167,6 +167,25 @@ public class MemberService {
 		close(con);
 		
 		return result;
+	}
+	
+	/**
+	  * @Method Name : selectAllList
+	  * @작성일 : 2020. 2. 9.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : 모든 사원 정보 부서명으로 sorting해 불러오는 메소드
+	  * @return
+	  */
+	public ArrayList<Member> selectAllList() {
+		
+		Connection con = getConnection();
+		
+		ArrayList<Member> list = mDao.selectAllList(con);
+		
+		close(con);
+		
+		return list;
 	}
 	
 }
