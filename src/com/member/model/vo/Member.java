@@ -25,6 +25,10 @@ public class Member implements Serializable{
 	private double bonus;
 	
 
+	public Member() {
+		
+	}
+
 
 
 	/** 
@@ -164,4 +168,174 @@ public class Member implements Serializable{
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
+
+
+
+	public int getEmpNo() {
+		return empNo;
+	}
+
+
+
+	public void setEmpNo(int empNo) {
+		this.empNo = empNo;
+	}
+
+
+
+	public String getEmpName() {
+		return empName;
+	}
+
+
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+
+
+	public String getEmpId() {
+		return empId;
+	}
+
+
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+
+
+	public String getEmpPwd() {
+		return empPwd;
+	}
+
+
+
+	public void setEmpPwd(String empPwd) {
+		this.empPwd = empPwd;
+	}
+
+
+
+	public String getEmpSsn() {
+		return empSsn;
+	}
+
+
+
+	public void setEmpSsn(String empSsn) {
+		this.empSsn = empSsn;
+	}
+
+
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+
+
+	public String getJobName() {
+		return jobName;
+	}
+
+
+
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
+	public String getHome() {
+		return home;
+	}
+
+
+
+	public void setHome(String home) {
+		this.home = home;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
+	}
+
+
+
+	public Date getEntDate() {
+		return entDate;
+	}
+
+
+
+	public void setEntDate(Date entDate) {
+		this.entDate = entDate;
+	}
+
+
+
+	public String getEntYN() {
+		return entYN;
+	}
+
+
+
+	public void setEntYN(String entYN) {
+		this.entYN = entYN;
+	}
+
+	
 }
