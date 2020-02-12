@@ -231,8 +231,8 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
-              <h3>T & H Company</h3>
-              <img src="../resource/images/자바로고.png" id="logo">
+       <img src="../resource/images/로고1.png" id="logo">
+
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
@@ -274,9 +274,11 @@
              
               <div class="detail-profile">
                   <p >※ 상세 프로필</p>
-                  
-                  <img class="photo" src="../resource/images/자바로고.png"><br>
-                  <ul id="profile">
+                        <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
+        <div><div></div>
+                <img src="../resource/images/로고.png" width="110px" height="110px"  > 
+             
+              </div>   </div>                     <ul id="profile">
                     <li>이름    <span><%=m.getEmpName() %></span></li>
                     <li>생년월일    <span style="padding-left: 115px;"><%=m.getEmpSsn() %></span></li>
                     <li>사원번호   <span style="padding-left: 115px;"><%=m.getEmpNo() %></span></li>

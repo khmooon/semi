@@ -6,12 +6,12 @@
     pageEncoding="UTF-8"%>
 <% ArrayList<FoodList> list = (ArrayList)request.getAttribute("list"); 
 	Member m = (Member)session.getAttribute("member");
-PageInfo pi = (PageInfo)session.getAttribute("pi");
-int listCount = pi.getListCount();
-int currentPage = pi.getCurrentPage();
-int maxPage = pi.getMaxPage();
-int startPage = pi.getStartPage();
-int endPage = pi.getEndPage();
+	PageInfo pi = (PageInfo)session.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
 
 
 
@@ -150,15 +150,17 @@ int endPage = pi.getEndPage();
 top: -10px;
     }
     #inputfood{
-        margin: 15px;
-    width: 900px;
+    margin: 15px;
+    width: 1387px;
     height: 120px;
-        border-style: outset;
-        padding: 10px;
-
+    border-style: outset;
+    padding: 10px;
+    background: white;
+    position: relative;
     } 
     #inputfood label{
-        padding-right: 8px;
+           padding-right: 13px;
+    margin-left: 97px;
     }
     #dayfood{
         margin: 15px;
@@ -168,7 +170,6 @@ top: -10px;
     background: white;
     line-height: 40px;
     padding-left: 35px;
-    background: rgba(238, 235, 235, 0.822);
     border-radius: 15px;
     }
     #dayfood span{
@@ -205,8 +206,7 @@ top: -10px;
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
-              <h3>T & H Company</h3>
-              <img src="./resource/images/로고.png" id="logo">
+         <img src="../resource/images/로고1.png" id="logo">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
@@ -243,7 +243,7 @@ top: -10px;
                     <li class="list-group-item"><a href="/view/admin_add_user.jsp">회원추가</a></li>
                     <li class="list-group-item"><a href="/Semi/mList.em">회원목록</a></li>
                     <li class="list-group-item"><a href="../view/admin_board_list.html">게시글 관리</a></li>
-                    <li class="list-group-item"><a href="">식단관리</a></li>                    
+                    <li class="list-group-item"><a href="/Semi/flist.fo">식단관리</a></li>                    
                     </ul>
               </div>                    
               </div>
@@ -259,7 +259,7 @@ top: -10px;
                     <label >국 : </label><input name="soup" type="text" id="soup">
                     <label >주메뉴 : </label><input name="mainfood" type="text" id="mainfood">
                     <div style="text-align: right;"> 
-                    <input type="submit" value="저장" id="save" style=" margin-top: 12px;">
+                    <input type="submit" value="저장" id="save" ;>
                     </div>
                 </div>
              </form>
@@ -323,16 +323,13 @@ top: -10px;
 			<button onclick="location.href='<%= request.getContextPath() %>/flist.fo?currentPage=<%= maxPage %>'">>></button>
 			
 		</div><br>
-                            <div id="searchForm" class="text-center" style="left: 240px;position: relative;">
-                              <form>
-                                  <select name="opt">
-                                      <option value="0">제목</option>
-                                      <option value="1">내용</option>
-                                      <option value="2">제목+내용</option>
-                                      <option value="3">글쓴이</option>
+                            <div  id="searchForm" class="text-center" style="left: 240px;position: relative;">
+                              <form action="/Semi/fsearch.fo">
+                                  <select name="category" style="height: 25px";>
+                                      <option value="day">날짜</option>
                                   </select>
-                                  <input type="text" size="20" name="condition"/>&nbsp;
-                                  <a class="btn btn-default btn-primary">검색</a>
+                                  <input type="date" size="20" name="keyword" style="height: 25px;"/>&nbsp;
+                                  <input type="submit" class="btn btn-default btn-primary" value="검색">
                               </form>    
                           </div>
            </div>           

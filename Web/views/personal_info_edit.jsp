@@ -205,8 +205,7 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
-              <h3>T & H Company</h3>
-              <img src="../resource/images/자바로고.png" id="logo">
+            <img src="../resource/images/로고1.png" id="logo">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>

@@ -3,16 +3,17 @@
 <%@page import="com.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ArrayList<Member> list = (ArrayList<Member>)session.getAttribute("list"); 
+<% ArrayList<Member> list = (ArrayList<Member>)session
+.getAttribute("list"); 
 	Member m = (Member)session.getAttribute("member");
 	PageInfo pi = (PageInfo)session.getAttribute("pi");
-	System.out.println(pi.toString());
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	
+
 %>
 <!doctype html>
 
@@ -120,8 +121,7 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
-              <h3>T & H Company</h3>
-              <img src="./resource/images/로고.png" id="logo">
+             <img src="../resource/images/로고1.png" id="logo">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
@@ -165,8 +165,8 @@
                             <!-- 사이드바 메뉴목록1 -->
                             <ul class="list-group">
                               <li class="list-group-item"><a href="views/admin_add_employee.jsp">회원추가</a></li>
-                            <li class="list-group-item"><a href="">회원목록</a></li>
-                            <li class="list-group-item"><a href="admin_board_list.jsp">게시글 관리</a></li>
+                            <li class="list-group-item"><a href="/Semi/mList.em">회원목록</a></li>
+                            <li class="list-group-item"><a href="">게시글 관리</a></li>
                             <li class="list-group-item"><a href="/Semi/flist.fo">식단관리</a></li>
                             </ul>
                         </div>                    
@@ -233,15 +233,16 @@
 			
 		</div><br>
                             <div id="searchForm" class="text-center">
-                              <form>
-                                  <select name="opt">
-                                      <option value="0">제목</option>
-                                      <option value="1">내용</option>
-                                      <option value="2">제목+내용</option>
-                                      <option value="3">글쓴이</option>
+                              
+                              <form action="/Semi/mSearch.em">
+                                  <select name="category" style="height: 26px;">
+                                      <option value="empno">사원번호</option>
+                                      <option value="empname">사원명</option>
+                                      <option value="deptname">부서</option>
+                                      <option value="jobname">직급</option>
                                   </select>
-                                  <input type="text" size="20" name="condition"/>&nbsp;
-                                  <a class="btn btn-default btn-primary">검색</a>
+                                  <input type="text" size="20" name="Keyword"/>&nbsp;
+                                  <input type="submit" value="검색" class="btn btn-default btn-primary">
                               </form>    
                           </div>
                           <a style="position: relative;right: 35px;

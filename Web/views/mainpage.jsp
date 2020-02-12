@@ -1,11 +1,15 @@
+<%@page import="com.foodlist.service.FoodListService"%>
+<%@page import="com.foodlist.model.vo.FoodList"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
   <%
 	 Member m = (Member)session.getAttribute("member"); 
-	 // session.setMaxInactiveInterval(1000);
-	 
+	  FoodListService fs = new FoodListService();
+	  ArrayList<FoodList> flist = fs.foodList(1, 7);
+	  
 	%>
 <!doctype html>
 
@@ -7073,17 +7077,7 @@ $.ajax({
     type: "GET",
     async: "false",
     success: function(resp) {
-        console.log(resp);
-        console.log("현재온도 : "+ (resp.main.temp- 273.15) );
-        console.log("현재습도 : "+ resp.main.humidity);
-        console.log("날씨 : "+ resp.weather[0].main );
-        console.log("상세날씨설명 : "+ resp.weather[0].description );
-        console.log("날씨 이미지 : "+ resp.weather[0].icon );
-        console.log("바람   : "+ resp.wind.speed );
-        console.log("나라   : "+ resp.sys.country );
-        console.log("도시이름  : "+ resp.name );
-        console.log("구름  : "+ (resp.clouds.all) +"%" ); 	
-        // console.log(typeof (resp.main.temp- 273.15)); 	
+
         $('#cityName').text(resp.name);	
         var cityTemp= resp.main.temp- 273.15
         $('#cityTemp').text(cityTemp.toFixed(2));
@@ -7098,7 +7092,6 @@ $.ajax({
         var d = new Date();
         var day = d.getFullYear()+"년"+d.getMonth()+1+"월"+d.getDate()+"일";
         var time = d.getHours()+"시"+d.getMinutes()+"분"
-        console.log(day+time);
          document.getElementById('realTime').innerHTML = day+"<br>"+time;
        },1000);
 
@@ -7570,10 +7563,10 @@ html, body {
       border-radius: 15px;
     }
    
-  #foodtable tr,#foodtable td 
+   #foodtable tr,#foodtable td 
     {
-    padding: 11px;
-    border-top: 3px solid #ddd;
+    padding: 9px;
+    border-top: 5px solid #ddd;
      }
   #boardtable tr,#boardtable td 
     {
@@ -7821,8 +7814,8 @@ figure {
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
-              <h3>T & H Company</h3>
-              <img src="../resource/images/로고.png" id="logo">
+               <img src="../resource/images/로고1.png" id="logo">
+
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
@@ -7831,9 +7824,8 @@ figure {
               <a href="mainpage.jsp" class="mdl-layout__tab">홈</a>
               <a class="mdl-layout__tab" onclick="goNotice()">공지사항</a>
               <a class="mdl-layout__tab" onclick="goBoard()">게시판</a>
-              <a href='' onclick='workingHour();' class="mdl-layout__tab">근태관리</a>
-	    
-	    <a href="<%=request.getContextPath()%>/views/confirm/confirm.jsp" class="mdl-layout__tab">전자결제</a>
+              <a href="#features" class="mdl-layout__tab">근태관리</a>
+              <a href="#features" class="mdl-layout__tab">전자결제</a>
               <a href="mypage.jsp" class="mdl-layout__tab">인사정보</a>
               <form action="/Semi/logout.me">
               <input type="submit" class="mdl-layout__tab" id="login" value="로그아웃" style="background: #512DA8;">  
@@ -7852,7 +7844,11 @@ figure {
             <div class="main">
             <div class="article left">
               <div class="profile">
-                <img class="myphoto" src="../resource/images/자바로고.png" alt="">
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
+        <div><div></div>
+                <img src="../resource/images/로고.png" width="110px" height="110px"  > 
+             
+              </div>   </div>   
                 <p class="name" style="left: 143.58px;"><%=m.getEmpName() %></p>
                 <p class="title">영업부 사원</p>
                 <p class="todaycheck"> º 오늘의 일정 : <sapn>0 건</sapn></p>
@@ -7874,11 +7870,11 @@ figure {
                   top: -5px;
                   left: -87px;
                   font-weight: 900;
-                  font-size: 20px;
+                  font-size: 16px;
                   line-height: 46px;
                   letter-spacing: 0.04em;
                   color: #000000;">※사내 식당 메뉴</label><hr>
-                  <table  id="foodtable"class="table table-striped" style="border: 1px solid black;">
+                  <table  id="foodtable"class="table table-striped"; style="font-size: 13px;">
                   <thead>
                     <tr>
                       <th>날짜</th>
@@ -7886,48 +7882,14 @@ figure {
                     </tr>
                   </thead>
                   <tbody>
+                  <%for(FoodList f : flist) {%>
                     <tr >
-                      <td >2010-01-10</td >
-                      <td><span>콩밥</span></td>
-                      <td>콩나물국</td>
-                      <td>콩나물 무침</td>
+                      <td ><%=f.getDay() %></td>
+                      <td><%=f.getRice() %></td>
+                      <td><%=f.getSoup() %></td>
+                      <td><%=f.getMainfood() %></td>
                     </tr>
-                    <tr>
-                      <td>2010-01-11</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
-                    <tr>
-                      <td>2010-01-12</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
-                    <tr>
-                      <td>2010-01-13</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
-                    <tr>
-                      <td>2010-01-14</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
-                    <tr>
-                      <td>2010-01-15</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
-                    <tr>
-                      <td>2010-01-16</td>
-                      <td><span>콩밥  -</span></td>
-                      <td>콩나물국  -</td>
-                      <td>콩나물 무침</td>
-                    </tr>
+                    <%} %>
                   </tbody>
                 </table>
                 </div>
@@ -8182,13 +8144,6 @@ function AMPM(D){
             	function goBoard(){
             		location.href="/Semi/selectList.bo";
             	}
-            	
-         
-
-        		function workingHour() {
-        			window.open("<%=request.getContextPath()%>/views/workingHour/workinghour.jsp","결재선 지정","width=1100, height=700,resizable=yes");
-        		}
-
             </script>
 </body>
 </html>

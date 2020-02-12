@@ -42,7 +42,7 @@ public class FoodSearchServlet extends HttpServlet {
 		FoodListService fs = new FoodListService();
 		
 		list = fs.foodSeachList(category,keyword);
-		
+		System.out.println();
 		
 		if(list !=null) {
 			System.out.println(list.toString());
