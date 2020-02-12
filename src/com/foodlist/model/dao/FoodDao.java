@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 import static com.member.common.JDBCTemplate.*;
 import com.foodlist.model.vo.FoodList;
-import com.member.model.dao.MemberDao;
 
 public class FoodDao {
 
@@ -22,7 +21,7 @@ public class FoodDao {
 		
 		 prop = new Properties();
 	      
-	      String filePath = MemberDao.class.getResource("/config/foodlist-query.properties").getPath();
+	      String filePath = FoodDao.class.getResource("/config/foodlist-query.properties").getPath();
 	      
 	      try {
 	         prop.load(new FileReader(filePath));
@@ -169,7 +168,47 @@ public class FoodDao {
 		
 		return listCount;
 	}
-	
-	
-	
+
+	public ArrayList<FoodList> foodSearchList(Connection con, String category,String keyword) {
+
+		ArrayList<FoodList> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch(category) {
+		
+		case "day":sql=prop.getProperty("searchlist"); break;
+		}
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,keyword);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<FoodList>();
+			
+		while(rset.next()) {
+			FoodList f = new FoodList();
+				
+				f.setNo(rset.getInt("F_NO"));
+				f.setDay(rset.getString("F_DATE"));
+				f.setRice(rset.getString("F_RICE"));
+				f.setSoup(rset.getString("F_SOUP"));
+				f.setMainfood(rset.getString("F_MAINFOOD"));
+					list.add(f);
+					
+		}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 }

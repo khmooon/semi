@@ -581,7 +581,66 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
+	/**
+	 * @param con
+	 * @param category
+	 * @param keyword
+	 * @return
+	 * @작성자 : 문태환
+	 * @내용  : 관리자 사원목록 검색
+	 */
+	public ArrayList<Member> adminSearchMember(Connection con, String category, String keyword) {
 
+		ArrayList<Member> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		System.out.println(category);
+		System.out.println(keyword);
+		switch(category) {
+		
+		case "empno":sql=prop.getProperty("adminSearchMemberNo"); break;
+		case "empname":sql=prop.getProperty("adminSearchMemberName");break;
+		case "deptname":sql=prop.getProperty("adminSearchDeptName");break;
+		case "jobname":sql=prop.getProperty("adminSearchJobName"); break;
+		
+		}
+		try {
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,keyword);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Member>();
+			
+		while(rset.next()) {
+			
+			Member m = new Member();
+			
+			m.setEmpNo(rset.getInt("EMP_NO"));	
+			m.setEmpName(rset.getString("EMP_NAME"));
+			m.setEmpSsn(rset.getString("EMP_SSN"));
+			m.setDeptName(rset.getString("DEPT_NAME"));
+			m.setJobName(rset.getString("JOB_NAME"));
+			m.setHireDate(rset.getDate("HIRE_DATE"));
+			m.setEntDate(rset.getDate("ENT_DATE"));
+					list.add(m);
+		}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	
+	
 	
 }

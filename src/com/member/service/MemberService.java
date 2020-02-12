@@ -66,15 +66,20 @@ public class MemberService {
 		Connection con = getConnection();
 		
 		int result = mDao.memberAdd(con,m);
-		
-		if(result >0) commit(con);
-		else rollback(con);
+			
+		if(result >0) {
+			commit(con);
+		}else{
+			rollback(con);
+		}
+		int result1=mDao.memberSalaryAdd(con);
+			if(result1 > 0) {
+				commit(con);
+			}else {
+				rollback(con);
+		}
 		
 		close(con);
-		
-		
-				
-		
 	}
 
 	/**
@@ -126,12 +131,16 @@ public class MemberService {
 		int result = mDao.adminMemberUpdate(con,m);
 		
 		if(result > 0) {
-			int result2 = mDao.adminMemberSalary(con,m);
-			if(result2 > 0) {
-				commit(con);
-			}
+			commit(con);
 		}else{
 			rollback(con);
+		}
+		int result2 = mDao.adminMemberSalary(con,m);
+			
+		if(result2 > 0) {
+					commit(con);
+		}else {
+				rollback(con);
 		}
 		close(con);
 		
@@ -214,12 +223,14 @@ public class MemberService {
 		ArrayList<Member> list = null;
 		
 		if(category.length() > 0) {
-			//list = mDao.adminSearchMember(con,category,keyword);
+			list = mDao.adminSearchMember(con,category,keyword);
 		}else {
 			
 		}
 		
 		return list;
 	}
+
+	
 	
 }

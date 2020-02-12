@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.member.model.vo.Member;
 import com.member.service.MemberService;
@@ -32,20 +33,27 @@ public class AdminMemberSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String category = request.getParameter("con");
-		
+		String category = request.getParameter("category");
 		String Keyword = request.getParameter("Keyword");
 		
 		ArrayList<Member> list = new ArrayList<Member>();
+		
 	
 		MemberService ms = new MemberService();
 		
 		list = ms.searchMember(category,Keyword);
 		
+		HttpSession session = request.getSession();
+		
 		if(list != null) {
+			
+		
 			System.out.println("검색성공!");
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("/Semi/mList.em");
+			session.setAttribute("list", list);
+			
+			response.sendRedirect("views/admin_board_employee.jsp");
+			
+			//request.getRequestDispatcher("views/admin_board_employee.jsp").forward(request, response);
 		}else {
 			System.out.println("검색실패");
 		}
