@@ -4,6 +4,14 @@ import java.io.Serializable;
 
 public class PageInfo implements Serializable{
 	
+<<<<<<< HEAD
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2576608781615723002L;
+	
+=======
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 	private int currentPage;
 	private int listCount;
 	private int limit;

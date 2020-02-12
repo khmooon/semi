@@ -27,11 +27,34 @@ public class MessageService {
 		
 		return msg;
 	}
+<<<<<<< HEAD
+	public Message selectOne(int msgnum) { //메세지 하나만 갖고오기
+		Connection con = getConnection();
+		
+		Message msg = mDao.selectOne(con,msgnum);
+		
+		return msg;
+	}
+	public void SendMessage(Message msg, String receivelist) {
+		
+	Connection con = getConnection();
+		
+		int result = mDao.SendMessage(con,msg,receivelist);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+=======
 	public Message selectOne(int msgnum) {
 		Connection con = getConnection();
 		
 		Message msg = mDao.selectOne(con,msgnum);
 		
 		return msg;
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 	}
 }

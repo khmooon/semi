@@ -47,6 +47,42 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String dept = request.getParameter("dept");
 		String job = request.getParameter("job");
+<<<<<<< HEAD
+		String bank = request.getParameter("bank");
+		String bankNo = request.getParameter("bankno");
+		int salary = Integer.parseInt(request.getParameter("salary"));
+		double bonus = Double.parseDouble(request.getParameter("bonus"));
+
+		System.out.println(bank);
+		
+		m.setEmpNo(emp_no);
+		m.setEmpName(name);
+		m.setEmpSsn(ssn);
+		m.setEntYN(entyn);
+		m.setAddress(address);
+		m.setEmail(email);
+		m.setPhone(phone);
+		m.setHome(home);
+		m.setEmpId(id);
+		m.setEmpPwd(pwd);
+		m.setDeptName(dept);
+		m.setJobName(job);
+		m.setBank(bank);
+		m.setBankNo(bankNo);
+		m.setSalary(salary);
+		m.setBonus(bonus);
+		
+		
+		MemberService ms = new MemberService();
+
+		try {
+			
+			ms.adminMemberUpdate(m);
+			System.out.println("수정성공");
+			request.setAttribute("member", m);
+			request.getRequestDispatcher("mDetail.em").forward(request, response);
+		
+=======
 		
 		m.setEmpNo(emp_no);
 		m.setEmpName(name);
@@ -70,6 +106,7 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 			request.setAttribute("member", m);
 			request.getRequestDispatcher("mDetail.em").forward(request, response);
 			
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 		} catch (Exception e) {
 			System.out.println("수정실패");
 		}

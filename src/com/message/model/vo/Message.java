@@ -4,6 +4,23 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
+<<<<<<< HEAD
+	/**
+		 * 
+		 */
+	private static final long serialVersionUID = 1316799051552507598L;
+
+	private int message_Id;
+	private int send_emp_no;
+	private String send_emp_name;
+	private String send_dept_name;
+	private String send_job_name;
+	private String send_title;
+	private String send_content;
+	private String send_date;
+	private int receive_emp_no;
+	
+=======
 	/**a
 		 * 
 		 */
@@ -18,6 +35,7 @@ public class Message implements Serializable {
 	private String send_content;
 	private String send_date;
 	private int receive_emp_no;
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 	
 
 	public int getMessage_Id() {

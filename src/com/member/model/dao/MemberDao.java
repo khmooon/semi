@@ -428,6 +428,56 @@ public class MemberDao {
 		return listCount;
 	}
 
+<<<<<<< HEAD
+	
+
+	/**
+	 * @param 모든 사원정보 갖고오기 (작성자 김선엽)
+	 * @return
+	 */
+	public ArrayList<Member> getAllEmployee(Connection con){
+		ArrayList<Member> mlist = new ArrayList<Member>();
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAllList");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				Member m = new Member();
+				
+				m.setEmpNo(rset.getInt(1));
+				m.setEmpName(rset.getString(2));
+				m.setEmpId(rset.getString(3));
+				m.setEmpPwd(rset.getString(4));
+				m.setEmpSsn(rset.getString(5));
+				m.setDeptName(rset.getString(6));
+				m.setJobName(rset.getString(7));
+				m.setPhone(rset.getString(8));
+				m.setHome(rset.getString(9));
+				m.setAddress(rset.getString(10));
+				m.setEmail(rset.getString(11));
+				m.setHireDate(rset.getDate(12));
+				m.setEntDate(rset.getDate(13));
+				m.setEntYN(rset.getString(14));
+				
+				mlist.add(m);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+		return mlist;
+	}
 	/**
 	  * @Method Name : selectAllList
 	  * @작성일 : 2020. 2. 9.
@@ -475,6 +525,113 @@ public class MemberDao {
 
 		return list;
 	}
+	public int memberSalaryAdd(Connection con) {
+
+		int result = 0;
+	
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("MemberSalaryAdd");
+		
+		try {
+			stmt = con.createStatement();
+			
+			result = stmt.executeUpdate(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(stmt);	
+		}
+		
+	
+	return result;
+}
+	/**
+	 * @param con
+	 * @param m
+	 * @return
+	 * @작성자 : 문태환
+	 * @내용  : 관리자 사원급여 정보수정 
+	 */
+	public int adminMemberSalary(Connection con, Member m) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("adminMemberSalary");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getBank());
+			pstmt.setString(2, m.getBankNo());
+			pstmt.setInt(3, m.getSalary());
+			pstmt.setDouble(4, m.getBonus());
+			pstmt.setInt(5, m.getEmpNo());
+			
+	    	result = pstmt.executeUpdate();	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+=======
+	/**
+	  * @Method Name : selectAllList
+	  * @작성일 : 2020. 2. 9.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : 모든 사원 정보를 부서명으로 sorting해 불러오기
+	  * @param con
+	  * @return
+	  */
+	public ArrayList<Member> selectAllList(Connection con) {
+		
+		ArrayList<Member> list = null;
+		
+		Statement stmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAllList");
+			
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<Member>();
+			
+			while(rset.next()) {
+				// 생성자 하나 만들어서 최소 정보만 불러오기
+				Member m = new Member(
+						rset.getInt("EMP_NO"),
+						rset.getString("EMP_NAME"),
+						rset.getString("DEPT_NAME"),
+						rset.getString("JOB_NAME")
+						);
+				list.add(m);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rset);
+		}
+
+		return list;
+	}
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 	
 	
 	

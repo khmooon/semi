@@ -282,6 +282,178 @@
      } 
     #namearea{  
      position: relative;
+<<<<<<< HEAD
+    left: 20%;
+    top: 13%;
+    width: 900px;
+    height: 650px;
+    padding: 27px;
+    background: snow;
+    text-align: center;
+    }
+    .list-group-item{
+      margin-bottom: 20px;
+      border: 0px;
+      padding-left: 50px;
+    }
+    .list-group-item a{
+      color : black;
+    }
+    
+    .side-bar{width: 300px; height: 1000px; text-align: left;}
+
+    .page-content{width: 900px; height: 800px; position: absolute; left: 350px; }
+
+    </style>
+<!--태환 css-->    
+  
+</head>
+
+<body>
+    <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row" id="top">
+              <h3>T & H Company</h3>
+              <img src="../resource/images/자바로고.png" id="logo">
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+
+            <a href="mainpage.jsp" class="mdl-layout__tab">홈</a>
+              <a href="border(total).jsp" class="mdl-layout__tab">게시판</a>
+              <a href="#features" class="mdl-layout__tab">근태관리</a>
+              <a href="#features" class="mdl-layout__tab">전자결제</a>
+              <a href="mypage.jsp" class="mdl-layout__tab">인사정보</a>
+              <a id="login" href="login.jsp" class="mdl-layout__tab">로그인</a>
+              <a href="#features" class="mdl-layout__tab" onclick="MessageOpen();">메신저</a>
+               
+              
+              
+              <span class="visuallyhidden">Add</span>
+              </button>
+            </div>
+          </header>
+          
+          <div class="mdl-layout__tab-panel is-active" id="overview">
+            
+           <div class="main">
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+              <div class="side-bar">
+                <!-- 사이드 바 메뉴-->
+                <!-- 패널 타이틀1 -->
+                <div class="panel panel-info">
+                    <div class="panel-heading" style=" padding: 20px;" >
+                    <h3 class="panel-title" style="font-size: 20px;
+                    font-weight: 900;">관리자 메뉴</h3>
+                    </div>
+                    <!-- 사이드바 메뉴목록1 -->
+                    <ul class="list-group">
+                            <li class="list-group-item"><a href="admin_add_user.jsp">회원추가</a></li>
+                            <li class="list-group-item"><a onclick="emplist()">회원목록</a></li>
+                            <li class="list-group-item"><a href="admin_board_list.jsp">게시글 관리</a></li>
+                            <li class="list-group-item"><a href="admin_foodlist.jsp">식단관리</a></li>
+                            </ul>
+                </div>                    
+        </div><br>                            
+                  <div class="page-content">
+                 		<form action="/Semi/mUpdate.em" method="post">
+                      <div id=namearea> 회원 정보 
+                        <table cellspacing='1' cellpadding='0' class="table table-bordered" style="margin: auto; text-align: center;">
+                         
+                         	<tr>
+                         	<img src='http://cafefiles.naver.net/20160207_240/faini0605_1454771377816gIOrs_PNG/temp_1454771344361.-647037276.png'  width='120' class='ti' >
+                         	</tr>
+                          <tr>
+                              <td colspan='3' rowspan='3' width='120' class='ti'><br>신 상 정 보</td>
+                              <td  colspan='1' class='ti' width='100'>성 명</td>
+                              <td colspan='2' class='ti' width='200'>주 민 등 록 번 호</td>
+                              <td  class='ti' width='150'>퇴사 여부</td>		
+                          </tr>
+                          <tr>
+                              <td colspan='1'><input value="<%=m.getEmpName() %>" name="name" type="text" style="width: 150px;"></td>
+                              <td colspan='2'><input value="<%=m.getEmpSsn() %>" name="ssn" type="text" style="width: 200px;"></td>
+                          	 	<td><select name="entyn">
+                          	 	<%if(m.getEntYN().equals("Y")){ %>
+                          	 	<option SELECTED>Y</option>
+                          	 	<option>N</option>
+                          	 	<%}else{ %>
+                          	 	<option>Y</option>
+                          	 	<option SELECTED>N</option>
+                          	 	<%} %>
+                          	 	</select></td>
+                          </tr>
+                          <tr>
+                          </tr>
+                          <tr>
+                              <td colspan='4' class='ti'>주 소</td>
+                              <td colspan='3' class='ti'><input value="<%=m.getAddress()%>" name="address" type="text" style="width: 400px;"></td>
+                          </tr>
+                          <tr>
+                              <td class='ti' colspan='3' rowspan='3'><br><br><br>연락처</td>
+                           
+                              <td class='ti' width='100'>전자우편  <br>--</td>
+                              <td colspan='3' ><input value="<%=m.getEmail() %>" name="email" type="text" style="width: 400px;"></td>
+                          </tr>
+                          <tr>
+                              <td   class='ti'>핸드폰 <br>(-)포함</td>
+                              <td colspan='3' ><input value="<%=m.getPhone() %>" name="phone" type="text" style="width: 400px; padding-left: 40px;"></td>
+                        
+                          </tr>
+                          <tr>
+                              <td   class='ti'>집전화 <br>(-)포함</td>
+                              <td colspan='3' ><input value="<%=m.getHome() %>" name="home" type="text" style="width: 400px; padding-left: 40px;"></td>
+                        
+                          </tr>
+                          <tr>
+                              <td class='ti' colspan='3'>계정 정보</td>
+                              <td class='ti'>계정 ID</td>
+                              <td><input value="<%=m.getEmpId() %>" name="id" type="text" style="width: 150px;" maxlength="12"></td>
+                              <td class='ti' width='100'>계정 PW</td>
+                              <td><input value="<%=m.getEmpPwd() %>" name="pwd" type="password" style="width: 200px;"></td>
+                          </tr>
+                          <tr>
+                      		   <td class='ti' colspan='3'>인사 정보</td>
+                              <td class='ti'>부서</td>
+                              <td><input value="<%=m.getDeptName() %>" name="dept" type="text" style="width: 150px;" maxlength="12"></td>
+                              <td class='ti' width='100'>직급</td>
+                              <td><input value="<%=m.getJobName() %>" name="job" type="text" style="width: 200px;"></td>
+           
+                          </tr>
+                          <tr>
+                      		   <td class='ti' colspan='3'>계좌 정보</td>
+                              <td class='ti'>은행</td>
+                              <td><input value="<%=m.getBank() %>" name="bank" type="text" style="width: 150px;" maxlength="12"></td>
+                              <td class='ti' width='100'>계좌번호</td>
+                              <td><input value="<%=m.getBankNo() %>" name="bankno" type="text" style="width: 200px;"></td>
+           
+                          </tr>
+                          <tr>
+                      		   <td class='ti' colspan='3'>급여 정보</td>
+                              <td class='ti'>급여</td>
+                              <td><input value="<%=m.getSalary() %>" name="salary" type="text" style="width: 150px;" maxlength="12"></td>
+                              <td class='ti' width='100'>보너스율</td>
+                              <td><input value="<%=m.getBonus() %>" name="bonus" type="text" style="width: 200px;"></td>
+           
+                          </tr>
+                      </table>
+           					<input type="hidden" value="<%=m.getEmpNo() %>" name="no">
+                      <br><br><br>
+                      <input type="submit" value="수정" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <input type="submit" value="완료"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                      </div>
+                      </form>
+                    </div>
+             
+              </div>
+           </div>
+          </div>
+         <%@ include file="./common/footer.jsp" %>
+=======
   left: 20%;
     top: 13%;
     width: 900px;
@@ -469,6 +641,7 @@
               </ul>
             </div>
           </footer>
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
             
 
             <script>

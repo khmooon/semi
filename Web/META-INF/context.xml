@@ -35,7 +35,11 @@
             maxIdle="10"
             maxWaitMillis="10000"
             driverClassName="oracle.jdbc.driver.OracleDriver"
+<<<<<<< HEAD
+            url="jdbc:oracle:thin:@localhost:1521:xe"
+=======
             url="jdbc:oracle:thin:@localhost:1522:xe"
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
             username="SEMI"
             password="SEMI"/>
     

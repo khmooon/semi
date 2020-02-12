@@ -44,7 +44,10 @@ public class AdminMemberAddServlet extends HttpServlet {
 		String dept = request.getParameter("dept");
 		String job = request.getParameter("job");
 		
+<<<<<<< HEAD
+=======
 		
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 		Member m = new Member(name, id, pwd, ssn, dept, job, phone, home, address, email);
 		
 		MemberService ms = new MemberService();

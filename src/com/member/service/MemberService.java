@@ -126,6 +126,100 @@ public class MemberService {
 		int result = mDao.adminMemberUpdate(con,m);
 		
 		if(result > 0) {
+<<<<<<< HEAD
+			int result2 = mDao.adminMemberSalary(con,m);
+			if(result2 > 0) {
+				commit(con);
+			}
+		}else{
+			rollback(con);
+		}
+		close(con);
+		
+	}
+
+	/**
+	 * @param del
+	 * @작성자 :문태환 
+	 * @내용  : 관리자 사원삭제
+	 */
+	public void adminMemberDelete(String[] del) {
+
+		Connection con = getConnection();
+		
+		int result = mDao.adminMemberDelete(con,del);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+	}
+	
+	/**
+	 * @return
+	 * @작성자 :문태환 
+	 * @내용  : 총 사원정보 갯수
+	 */
+	public int getListCount() {
+		Connection con = getConnection();
+		
+		int result = mDao.getListCount(con);
+
+		close(con);
+		
+		return result;
+	}
+	
+	/**
+	  * @Method Name : selectAllList
+	  * @작성일 : 2020. 2. 9.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : 모든 사원 정보 부서명으로 sorting해 불러오는 메소드
+	  * @return
+	  */
+	public ArrayList<Member> selectAllList() {
+		
+		Connection con = getConnection();
+		
+		ArrayList<Member> list = mDao.selectAllList(con);
+		
+		close(con);
+		
+		return list;
+	}
+	
+	public ArrayList<Member> allEmployee(){
+		Connection con = getConnection();
+		
+		ArrayList<Member> allE = mDao.getAllEmployee(con);
+		
+		close(con);
+		
+		return allE;
+	}
+	
+	/**
+	 * @param category
+	 * @param keyword
+	 * @return
+	 * @작성자 : 문태환 
+	 * @내용  : 관리자 사원목록 검색
+	 */
+	public ArrayList<Member> searchMember(String category, String keyword) {
+		Connection con = getConnection();
+		
+		ArrayList<Member> list = null;
+		
+		if(category.length() > 0) {
+			//list = mDao.adminSearchMember(con,category,keyword);
+		}else {
+			
+		}
+=======
 			commit(con);
 		}else {
 			rollback(con);
@@ -184,6 +278,7 @@ public class MemberService {
 		ArrayList<Member> list = mDao.selectAllList(con);
 		
 		close(con);
+>>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 		
 		return list;
 	}
