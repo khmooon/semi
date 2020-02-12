@@ -170,8 +170,6 @@ public class Member implements Serializable{
 	}
 
 
-=======
-<<<<<<< HEAD
 	private String bank;
 	private String bankNo;
 	private int salary;
@@ -323,7 +321,6 @@ public class Member implements Serializable{
 	}
 
 
-=======
     
 	
 
@@ -424,8 +421,6 @@ public class Member implements Serializable{
 		this.deptName = deptName;
 		this.jobName = jobName;
 	}
->>>>>>> branch 'master' of https://github.com/khmooon/semi.git
->>>>>>> branch 'master' of https://github.com/khmooon/semi.git
 
 	public int getEmpNo() {
 		return empNo;
