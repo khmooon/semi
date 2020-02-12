@@ -41,7 +41,7 @@ public class FoodSearchServlet extends HttpServlet {
 		
 		FoodListService fs = new FoodListService();
 		
-		list = fs.foodSeachList(category,keyword);
+		//list = fs.foodSeachList(category,keyword);
 		
 		
 		if(list !=null) {
