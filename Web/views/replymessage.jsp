@@ -310,17 +310,13 @@ System.out.println(mlist.get(i).getEmpName());
   <script>
 
     function test1(){ //보내기전 테스트
- 
+   
     }
 
     function send(){ //최종보내기
-    	
-    	
-    	
         var str ="";
         
-       str += document.getElementsByClassName("jqte_editor")[0].innerHTML; //content 변수
-       
+        str += document.getElementsByClassName("jqte_editor")[0].innerHTML; //content 변수
        document.getElementById("sendno").value = <%=m.getEmpNo()%>;
        document.getElementById("title").value = document.getElementById('sample3').value;
        document.getElementById("content").value = str;
@@ -329,9 +325,8 @@ System.out.println(mlist.get(i).getEmpName());
        document.getElementById("sendname").value = '<%=m.getEmpName()%>';
        document.getElementById("senddeptname").value = '<%=m.getDeptName()%>';
        document.getElementById("sendjobname").value = '<%=m.getJobName()%>';
-       document.getElementById("sendfrm").submit();
-       
-       
+    	
+    	document.getElementById("sendfrm").submit();
     }
     
  
@@ -358,6 +353,7 @@ System.out.println(mlist.get(i).getEmpName());
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
+  
   <script src="js/demo/datatables-demo.js"></script>
   
 </body>

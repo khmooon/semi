@@ -222,7 +222,7 @@
     
       <hr>
       <div style="text-align: center;">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="reply();">
 
           답장하기
         </button>
@@ -261,7 +261,9 @@
   
   <!-- Page level custom scripts -->
   <script src="views/js/demo/datatables-demo.js"></script>
-
+	<form action="views/replymessage.jsp">
+		<input type=hidden name="emp_no" value="<%=no %>">
+	</form>
   <script>
       $('.jqte-test').jqte();
   
@@ -271,6 +273,10 @@
         jqteStatus = jqteStatus ? false : true;
         $('.jqte-test').jqte({ "status": jqteStatus })
       });
+      
+      function reply(){
+    	  location.href = "views/replymessage.jsp?emp_no=<%=no%>";
+      }
     </script>
 
 </body>
