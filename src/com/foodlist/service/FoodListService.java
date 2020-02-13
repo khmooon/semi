@@ -59,6 +59,19 @@ public class FoodListService {
 		return result;
 	}
 
+	public ArrayList<FoodList> foodSeachList(String category, String keyword) {
+
+			Connection con = getConnection();
+		
+		ArrayList<FoodList> list = fDao.foodSearchList(con,category,keyword);
+		
+		close(con);
+		
+		return list;
+		
+		
+	}
+
 	
 	
 	

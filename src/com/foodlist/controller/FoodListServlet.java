@@ -95,6 +95,8 @@ public class FoodListServlet extends HttpServlet {
 				
 				
 				request.setAttribute("list",list);
+				
+				//response.sendRedirect("views/admin_foodlist.jsp");
 				request.getRequestDispatcher("views/admin_foodlist.jsp").forward(request, response);
 				
 			} catch (Exception e) {

@@ -36,11 +36,12 @@ public class AdminMemberDetailServlet extends HttpServlet {
 		Member m = new Member();
 		
 		MemberService ms = new MemberService();
-		
+		System.out.println("여기 :"+no);
 		 m = ms.adminMemberDetail(no);
 		 
+		 
 		 if(m != null) {
-			 
+			
 			 m.getAddress();
 			 request.setAttribute("member",m);
 			 request.getRequestDispatcher("views/admin_detail_employee.jsp").forward(request, response);
