@@ -15,6 +15,7 @@
 	
 	<!-- 트리 CSS 시작 -->
 	<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/approval_tree.css">
+	<!-- 폰텔로 -->
 	<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/resources/src/tree_fontello/css/fontello.css">
 	<!-- 트리 CSS 끝 -->
 	
@@ -49,7 +50,6 @@
                         	int index = 0; 
 							for(String str : deptList) { 
 							String idfor = "a" + Integer.toString(index);
-							
 						%>
                         <li>
                         	<input type="checkbox" id="<%= idfor %>">
@@ -57,23 +57,13 @@
                         	
                         	<ul>
 	                        	<% for(int i=0; i<list.size(); i++){ %>
-	                        		
-	                        			
 	                        		<% if(list.get(i).getDeptName().equals(str)) { %>
-	                        		
-	                        			
 	                        		<li><%= list.get(i).getJobName() + " " + list.get(i).getEmpName() %>
-	                        		
 	                        			<input type='hidden' id='<%= list.get(i).getEmpNo() %>' value='<%= list.get(i).getEmpNo() %>'>
-	                        		
 	                        		</li>
-									
 									<% } %>
-									
 	                        	<% } %>
                         	</ul>
-                        	
-                        	
                         </li>
                         <% ++index; %>
                         <% } %>	       
@@ -83,7 +73,7 @@
 
                 <div id='box1-1'>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+<!--                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
                           <i class="material-icons">search</i>
                         </label>
@@ -91,9 +81,12 @@
                           <input class="mdl-textfield__input" type="text" id="sample6">
                           <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                         </div>
-                    </div>
-
-                    <input type="button" value='검색'>&nbsp;&nbsp;
+                    </div> -->
+                    <br>
+                    <span style="font-family: fontello;">&#xe804</span>
+                    <input type="text" placeholder="사원명을 입력하세요." id='searchValue'>
+					
+                    <input type="button" value='검색' id="searchEmp">&nbsp;&nbsp;
                     <input type="button" value='재설정'>&nbsp;&nbsp;
                 </div>
             </td>
@@ -213,17 +206,17 @@
                 
                 	<!------------------------------------ para로 튕길 hidden 값 ------------------------------------>
 					
-					<form action="<%= request.getContextPath() %>/goConfirm.ap" method="post">
+					<%-- <form action="<%= request.getContextPath() %>/goConfirm.ap" method="post"> --%>
 					
-						<input type='hidden' name='checklist_value' id='checklist_value'>
+						<!-- <input type='hidden' name='checklist_value' id='checklist_value'>
 						<input type='hidden' name='approvallist_value' id='approvallist_value'>
-						<input type='hidden' name='reflist_value' id='reflist_value'>
+						<input type='hidden' name='reflist_value' id='reflist_value'> -->
 						
-	                    <input type="button" value='저장' id='save_btn'>
-	                    <input type="submit" value='작성 완료' id='submit_btn'>
+	                    <!-- <input type="button" value='저장' id='save_btn'> -->
+	                    <input type="button" value='작성 완료' id='submit_btn'>
 	                    <input type="reset" value='취소(reset)'>
 	                    
-					</form>
+					<!-- </form> -->
 					
 					<!------------------------------------ para로 튕길 hidden 값 ------------------------------------> 
 

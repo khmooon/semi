@@ -123,7 +123,7 @@
 			
 			
 			
-			$('#save_btn').click(function(){
+			$('#submit_btn').click(function(){
 				
 				var str1 = "";
 				var str2 = "";
@@ -148,56 +148,97 @@
 					str3 += $(this).val() + " ";
 			        
 				});
+								
+// <!------------------------------------ ajax로 값 불러와서 뿌리기. ------------------------------------>
 				
-				$('#checklist_value').val(str1);
-				$('#approvallist_value').val(str2);
-				$('#reflist_value').val(str3);
+				$('#checklist_value', opener.document).val(str1);
+				$('#approvallist_value', opener.document).val(str2);
+				$('#reflist_value', opener.document).val(str3);
 				
-//				$.ajax({
-//					url : "/Inseok_Semi/AplSave.ap",
-//					type : "get",
-//					data : {
-//						checklist_value : str1,
-//						approvallist_value :  str2,
-//						reflist_value :  str3
-//					},success : function(str1){
-//						$('#checklist_value').text(str1);
-//					},error : function(request, errorcode, error){
-//						console.log("실패입니다.");
-//						console.log(request);
-//						console.log(errorcode);
-//						console.log(error);
-//					}
-//				});	
+				$.ajax({
+					url:"/Semi/goConfirm.ap",
+					type:"post",
+					data:{
+						checklist_value:str1,
+						approvallist_value:str2,
+						reflist_value:str3
+					},success:function(data){
+						
+						$.each(data.checklistArr,function(index, value){
+							
+							var $tr = $('<tr>');
+							var $td = $('<td>');
+							var $deptName = $('<td>').text(value.deptName);
+							var empjobName = value.jobName + " " + value.empName;
+							var $empjobName = $('<td>').text(empjobName);
+							
+							if(index==0){
+								$('#list1', opener.document).children().remove();
+								$('#list1', opener.document).append($td.text("검토"));
+								$('#list1', opener.document).append($deptName);
+								$('#list1', opener.document).append($empjobName);
+								$('#list1', opener.document).css("background-color","#efefef");
+							}else{
+								$tr.append($td);
+								$tr.append($deptName);
+								$tr.append($empjobName);					
+								
+								$tr.insertAfter($('#list1', opener.document))	
+							}
+						});
+						
+						$.each(data.referlistArr,function(index, value){
+							var $tr = $('<tr>');
+							var $td = $('<td>');
+							var $deptName = $('<td>').text(value.deptName);
+							
+							var empjobName = value.jobName + " " + value.empName;
+							var $empjobName = $('<td>').text(empjobName);
+
+							if(index==0){
+								$('#list2', opener.document).children().remove();
+								$('#list2', opener.document).append($td.text("협조"));
+								$('#list2', opener.document).append($deptName);
+								$('#list2', opener.document).append($empjobName);
+								$('#list2', opener.document).css("background-color","#efefef");
+							}else{
+								$tr.append($td);
+								$tr.append($deptName);
+								$tr.append($empjobName);					
+								
+								$tr.insertAfter($('#list2', opener.document))	
+							}
+							
+						});
+						
+						$.each(data.approverArr,function(index, value){
+							var $tr = $('<tr>');
+							var $th = $('<th>').text("승인");
+							var $deptName = $('<th>').text(value.deptName);
+							
+							var empjobName = value.jobName + " " + value.empName;
+							var $empjobName = $('<th>').text(empjobName);
+
+							$tr.append($th);
+							$tr.append($deptName);
+							$tr.append($empjobName);					
+							
+							$('#list3', opener.document).children().remove();
+							$('#list3', opener.document).append($tr);
+							
+						});
+						
+						window.close();
+						
+					},error:function(){
+						alert("에러입니다.");
+					}
+				});
+// <!------------------------------------ ajax로 값 불러와서 뿌리기. ------------------------------------>
 				
 			});
 // <!------------------------------------ para로 튕길 hidden 값 뿌리는 메소드 ------------------------------------>
 
-// <!------------------------------------ para로 튕기기 전 hidden 값 뿌리는 메소드 ------------------------------------>			
-			
-			$('#submit_btn').click(function(){
-				
-				alert(str1);
-				
-				$.ajax({
-					url : "/Semi/goConfirm.ap",
-					type : "post",
-					data : {
-						checklist_value : str1,
-						approvallist_value :  str2,
-						reflist_value :  str3
-					},success : function(){
-						alert('완료!');
-					},error : function(request, errorcode, error){
-						console.log("실패입니다.");
-						console.log(request);
-						console.log(errorcode);
-						console.log(error);
-					}
-				});
-			});
-			
-// <!------------------------------------ para로 튕기기 전 hidden 값 뿌리는 메소드 ------------------------------------>
 			
 // <!------------------------------------ 전체 삭제 메소드 ------------------------------------>
 			$('#checkAlllistbtn_del').click(function(){
@@ -223,12 +264,38 @@
 
 // <!------------------------------------ 전체 삭제 메소드 ------------------------------------>
 
+// <!------------------------------------ 검색 전 사원 이름 중복 확 메소드 ------------------------------------>	
+			$('#searchValue').keyup(function(){
+	            $.ajax({
+	            	url:"/Semi/searchAp.ap",
+	            	type:"post",
+	            	data:{
+	            		empName:$('#searchValue').val()
+	            	},success:function(){
+	            		
+	            		
+	            		
+	            	},error:function(){
+	            		console.log("Error 입니다.");
+	            	}
+	            });
+	        });
+			
+			
+			
+			
+			
+// <!------------------------------------ 검색 전 사원 이름 중복 확 메소드 ------------------------------------>	
+	
 // <!------------------------------------ 검색 메소드 ------------------------------------>			
 			
+			$('#searchEmp').click(function(){
+				
+				var empName = $('#searchValue').val()
+				
+				
+			});
 			
-			
-			
-
 // <!------------------------------------ 검색 메소드 ------------------------------------>
 	    });
 

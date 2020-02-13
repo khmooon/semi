@@ -231,6 +231,35 @@ public class MemberService {
 		return list;
 	}
 
-	
+	/**
+	* @Method Name : selectConfirmListcheck
+	* @작성일 : 2020. 2. 11.
+	* @작성자 : songinseok
+	* @변경이력 :
+	* @Method 설명 : confirm에 list 정보 가져오는 메소드
+	* @param confirmListArr
+	* @return
+	*/
+	public ArrayList<Member> selectConfirmListcheck(String[] confirmListArr) {
+
+	Connection con = getConnection();
+
+	ArrayList<Member> list = mDao.selectConfirmListcheck(con, confirmListArr);
+
+	close(con);
+
+	return list;
+	}
+
+	public int nameSearchCheck(String empName) {
+
+	Connection con = getConnection();
+
+	int result = mDao.nameSearchCheck(con, empName);
+
+	close(con);
+
+	return result;
+	}
 	
 }

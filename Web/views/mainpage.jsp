@@ -7825,7 +7825,7 @@ figure {
               <a class="mdl-layout__tab" onclick="goNotice()">공지사항</a>
               <a class="mdl-layout__tab" onclick="goBoard()">게시판</a>
               <a href="#features" class="mdl-layout__tab">근태관리</a>
-              <a href="#features" class="mdl-layout__tab">전자결제</a>
+              <a href="<%=request.getContextPath()%>/views/confirm/confirm.jsp" class="mdl-layout__tab">전자결제</a>
               <a href="mypage.jsp" class="mdl-layout__tab">인사정보</a>
               <form action="/Semi/logout.me">
               <input type="submit" class="mdl-layout__tab" id="login" value="로그아웃" style="background: #512DA8;">  

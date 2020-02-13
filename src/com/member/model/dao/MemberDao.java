@@ -640,7 +640,88 @@ public class MemberDao {
 		return list;
 	}
 
-	
-	
-	
+	/**
+	  * @Method Name : selectConfirmListcheck
+	  * @작성일 : 2020. 2. 11.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : confirm에 list 정보 가져오는 메소드
+	  * @param con
+	  * @param confirmListArr
+	  * @return
+	  */
+	public ArrayList<Member> selectConfirmListcheck(Connection con, String[] confirmListArr) {
+		
+		ArrayList<Member> list = new ArrayList<Member>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectConfirmListcheck");
+			
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			for (String str : confirmListArr) {
+				
+				pstmt.setString(1, str);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					// 생성자 하나 만들어서 최소 정보만 불러오기
+					
+					Member m = new Member(
+							rset.getInt("EMP_NO"),
+							rset.getString("EMP_NAME"),
+							rset.getString("DEPT_NAME"),
+							rset.getString("JOB_NAME")
+							);
+					list.add(m);
+				}
+
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+
+	/**
+	  * @Method Name : nameSearchCheck
+	  * @작성일 : 2020. 2. 13.
+	  * @작성자 : songinseok
+	  * @변경이력 : 
+	  * @Method 설명 : approval에서 사원 검색
+	  * @param con
+	  * @param empName
+	  * @returnm
+	  */
+	public int nameSearchCheck(Connection con, String empName) {
+		
+		int result = -1;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("nameSearchCheck");
+		
+		
+		
+		
+		
+		
+		
+		return result;
+	}
 }
+	
+	
+
