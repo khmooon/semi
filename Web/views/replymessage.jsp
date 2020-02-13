@@ -15,7 +15,12 @@ ArrayList<Member> mlist = new MemberService().allEmployee();
 for(int i=0;i<mlist.size();i++)
 System.out.println(mlist.get(i).getEmpName());
 
+String replyempname= request.getParameter("replyempname");
+String replydept = request.getParameter("replydept");
+String replyjob = request.getParameter("replyjob");
+String replycontent = request.getParameter("replycontent");
 %>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -203,6 +208,18 @@ System.out.println(mlist.get(i).getEmpName());
             		  }
             	  }
               }
+              
+           
+           document.getElementById('sendlist').innerHTML += '<span class="mdl-chip mdl-chip--deletable" id = SLI'+ SendListIndex +'>'
+           + '<span class="mdl-chip__text">'+<%=replyempname%>+'</span>'
+           + '<button type="button" class="mdl-chip__action" onclick="DeleteSendlist('+SendListIndex+');"><i class="material-icons">cancel</i></button>'
+           + '</span>';
+           SendListIndex++;
+           receivelist.push(<%=replyempname%>) ; //목록에 이름을 추가
+           receivelist2.push(sendnolist[sendlist.indexOf(<%=replyempname%>)]); //??? 슈발어케한거지
+           console.log("받는사원 : "+receivelist);
+           console.log("받는 사원번호 : " + receivelist2);
+
               
           function addlist() {
 

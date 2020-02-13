@@ -261,8 +261,13 @@
   
   <!-- Page level custom scripts -->
   <script src="views/js/demo/datatables-demo.js"></script>
-	<form action="views/replymessage.jsp">
+	<form id=replyfrm action="views/replymessage.jsp" method="get">
 		<input type=hidden name="emp_no" value="<%=no %>">
+		<input type=hidden name="replyempname" value=<%=m.getSend_emp_name() %>>
+		<input type=hidden name="replydept" value=<%=m.getSend_dept_name() %>>
+		<input type=hidden name="replyjob" value=<%=m.getSend_job_name() %>>
+		<input type=hidden name="replycontent" value="<%=m.getSend_content()%>">
+		
 	</form>
   <script>
       $('.jqte-test').jqte();
@@ -275,7 +280,7 @@
       });
       
       function reply(){
-    	  location.href = "views/replymessage.jsp?emp_no=<%=no%>";
+    	  document.getElementById("replyfrm").submit();
       }
     </script>
 
