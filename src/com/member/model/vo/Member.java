@@ -337,5 +337,15 @@ public class Member implements Serializable{
 		this.entYN = entYN;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Member [empNo=" + empNo + ", empName=" + empName + ", empId=" + empId + ", empPwd=" + empPwd
+				+ ", empSsn=" + empSsn + ", deptName=" + deptName + ", jobName=" + jobName + ", phone=" + phone
+				+ ", home=" + home + ", address=" + address + ", email=" + email + ", hireDate=" + hireDate
+				+ ", entDate=" + entDate + ", entYN=" + entYN + ", bank=" + bank + ", bankNo=" + bankNo + ", salary="
+				+ salary + ", bonus=" + bonus + "]";
+	}
 	
 }
